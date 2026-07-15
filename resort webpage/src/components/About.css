@@ -1,0 +1,127 @@
+.about-section {
+  background-color: var(--resort-bg-cream);
+  overflow: hidden;
+}
+
+/* Image Stack overlapping layout */
+.about-image-stack {
+  position: relative;
+  height: 520px;
+  width: 100%;
+}
+
+.about-image-frame {
+  position: absolute;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--resort-bg-white);
+  transition: var(--transition-smooth);
+}
+
+.about-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: var(--transition-smooth);
+}
+
+.about-image-frame:hover {
+  z-index: 10;
+  transform: scale(1.02);
+}
+
+.about-image-frame:hover .about-img {
+  transform: scale(1.05);
+}
+
+.frame-primary {
+  width: 75%;
+  height: 380px;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.frame-secondary {
+  width: 65%;
+  height: 280px;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+}
+
+/* Perks list styling */
+.about-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.perk-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.perk-icon-wrap {
+  background-color: var(--resort-green-glow);
+  color: var(--resort-green-deep);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.perk-icon {
+  stroke-width: 2.25;
+  width: 22px;
+  height: 22px;
+}
+
+.perk-title {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--resort-green-deep);
+  margin-bottom: 0.25rem;
+}
+
+.perk-desc {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .about-image-stack {
+    height: 440px;
+  }
+  .frame-primary {
+    height: 320px;
+  }
+  .frame-secondary {
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-image-stack {
+    height: 360px;
+    margin-bottom: 3rem;
+  }
+  .frame-primary {
+    width: 80%;
+    height: 260px;
+  }
+  .frame-secondary {
+    width: 65%;
+    height: 180px;
+  }
+}

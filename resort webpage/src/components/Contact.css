@@ -1,0 +1,162 @@
+.contact-section {
+  background-color: var(--resort-bg-cream);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1.5rem; /* Gap on mobile viewports */
+}
+
+.contact-details-card {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-sm);
+}
+
+.contact-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contact-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.detail-icon-wrap {
+  background-color: var(--resort-green-glow);
+  color: var(--resort-green-deep);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--resort-green-deep);
+  margin-bottom: 0.15rem;
+}
+
+.detail-val {
+  margin-bottom: 0;
+}
+
+/* Interactive Map Panel */
+.contact-map-banner-interactive {
+  border: 1px solid rgba(27, 94, 32, 0.1);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--resort-bg-white);
+  overflow: hidden;
+}
+
+/* Booking Form Card */
+.booking-form-card {
+  padding: 3rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--resort-bg-white);
+}
+
+.form-card-title {
+  font-size: 1.85rem;
+  color: var(--resort-green-deep);
+}
+
+.form-label-custom {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--resort-green-deep);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.booking-form-card form {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.booking-form-card .col-md-6 {
+  grid-column: span 1;
+}
+
+.booking-form-card .col-12 {
+  grid-column: span 2;
+}
+
+.booking-form-card .d-flex {
+  display: flex !important;
+}
+
+.booking-form-card .flex-column {
+  flex-direction: column !important;
+}
+
+.booking-form-card input,
+.booking-form-card select {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(27, 94, 32, 0.15);
+  border-radius: 6px;
+  background-color: var(--resort-bg-cream);
+  color: var(--resort-text-dark);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.booking-form-card input:focus,
+.booking-form-card select:focus {
+  border-color: var(--resort-green-medium);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.booking-success-wrapper {
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .booking-form-card {
+    padding: 1.75rem;
+  }
+  .booking-form-card form {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  .booking-form-card .col-md-6 {
+    grid-column: span 1;
+  }
+}
+
+/* Desktop layout columns split and vertical alignment */
+@media (min-width: 992px) {
+  .contact-section .row.align-items-stretch {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 3rem !important;
+    align-items: stretch !important;
+  }
+  
+  .contact-section .col-lg-5 {
+    flex: 5 !important;
+  }
+  
+  .contact-section .col-lg-7 {
+    flex: 7 !important;
+  }
+}

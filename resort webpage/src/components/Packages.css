@@ -1,0 +1,89 @@
+.packages-section {
+  background-color: var(--resort-bg-cream);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+}
+
+.package-card {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--resort-bg-white);
+  border-top: 4px solid var(--resort-green-medium);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.package-card:hover {
+  border-top-color: var(--resort-green-deep);
+}
+
+/* Watermark background icon decors */
+.pkg-bg-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 90px;
+  height: 90px;
+  color: var(--resort-green-glow);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.package-tag-badge {
+  align-self: flex-start;
+  background-color: var(--resort-green-glow);
+  color: var(--resort-green-deep);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  margin-bottom: 0.75rem;
+  z-index: 2;
+}
+
+.package-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--resort-green-deep);
+  margin-bottom: 0.5rem;
+  z-index: 2;
+}
+
+.package-duration-row {
+  z-index: 2;
+  margin-bottom: 1.25rem !important;
+}
+
+.package-price-row {
+  z-index: 2;
+  margin-bottom: 1.25rem !important;
+}
+
+.package-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  z-index: 2;
+  margin-bottom: 1.5rem !important;
+}
+
+.package-features-list {
+  z-index: 2;
+  margin-bottom: 2rem !important;
+}
+
+.features-title {
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem !important;
+}
+
+.bullet-check {
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .package-card {
+    padding: 1.75rem;
+  }
+}

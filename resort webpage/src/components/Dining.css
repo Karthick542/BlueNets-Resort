@@ -1,0 +1,102 @@
+.dining-section {
+  background-color: var(--resort-bg-white);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+}
+
+.dining-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 !important; /* Full flush image styling */
+}
+
+/* Image container and visual effects */
+.dining-card-img-wrap {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--resort-green-glow);
+}
+
+.dining-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dining-card:hover .dining-card-img {
+  transform: scale(1.06);
+}
+
+/* Floating Overlap Icon Badge */
+.dining-icon-floating {
+  position: absolute;
+  bottom: -22px;
+  left: 1.75rem;
+  background-color: var(--resort-bg-white);
+  color: var(--resort-green-deep);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--resort-bg-white);
+  box-shadow: 0 6px 15px rgba(27, 94, 32, 0.12);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+}
+
+.dining-card:hover .dining-icon-floating {
+  background-color: var(--resort-green-deep);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* Floating Category Tag Overlay */
+.dining-card-cat-badge {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: rgba(30, 41, 34, 0.85);
+  color: var(--resort-green-light);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+}
+
+.dining-card-body {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dining-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--resort-green-deep);
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.dining-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .dining-card-body {
+    padding: 1.75rem;
+  }
+  .dining-card-img-wrap {
+    height: 180px;
+  }
+}

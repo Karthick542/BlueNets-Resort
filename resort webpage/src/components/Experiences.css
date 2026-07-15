@@ -1,0 +1,77 @@
+.experiences-section {
+  background-color: var(--resort-bg-white);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+}
+
+.experience-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-card-img-wrap {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+  background-color: var(--resort-green-glow);
+}
+
+.experience-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.experience-card:hover .experience-card-img {
+  transform: scale(1.06);
+}
+
+.experience-card-icon-tag {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background-color: var(--resort-bg-white);
+  color: var(--resort-green-deep);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(27, 94, 32, 0.05);
+}
+
+.experience-card-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.experience-card-cat {
+  color: var(--resort-green-medium);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+}
+
+.experience-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--resort-green-deep);
+}
+
+.experience-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+  .experience-card-body {
+    padding: 1.5rem;
+  }
+}

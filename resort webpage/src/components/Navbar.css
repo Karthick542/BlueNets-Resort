@@ -1,0 +1,324 @@
+/* Base Navbar Wrapper */
+.navbar-resort {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Make navbar container wider and more spacious for luxury spacing */
+.navbar-resort .container-resort {
+  max-width: 1440px !important;
+  width: 94% !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  transition: all 0.4s ease;
+}
+
+.navbar-initial {
+  position: absolute;
+  background: transparent;
+  padding-top: 2rem;
+}
+
+.navbar-sticky {
+  position: fixed;
+  padding-top: 0;
+  height: 80px;
+  background-color: #2F1E1A; /* Solid Dark Brown requested */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Inner Layout Containers */
+.navbar-inner-container {
+  display: flex;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
+}
+
+.inner-initial {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.inner-sticky {
+  flex-direction: row;
+  align-items: center;
+  justify-content: center !important; /* Horizontally center the nav menu */
+  position: relative !important;
+  height: 100%;
+}
+
+/* Branding & Decorative Divider Lines */
+.nav-branding-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inner-sticky .nav-branding-section {
+  position: absolute !important;
+  left: 1.5rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  justify-content: flex-start;
+  gap: 0;
+  z-index: 10 !important;
+}
+
+.decor-line {
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.25);
+  flex-grow: 1;
+}
+
+.nav-logo-anchor {
+  display: flex;
+  align-items: center;
+}
+
+/* Navigation Links Grid */
+.nav-menu-links {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  list-style: none;
+  margin-bottom: 0;
+  padding-left: 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inner-sticky .nav-menu-links {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important; /* Clear old manual offset */
+}
+
+.nav-link-resort-new {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  padding: 0.25rem 0;
+}
+
+.nav-link-resort-new:hover {
+  color: #fff;
+}
+
+.nav-link-resort-new::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--resort-green-light);
+  transition: var(--transition-fast);
+}
+
+.nav-link-resort-new:hover::after {
+  width: 100%;
+}
+
+/* Action Section (Sticky layout Book Now btn) */
+.nav-actions-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.inner-initial .nav-actions-section {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.inner-sticky .nav-actions-section {
+  position: absolute !important;
+  right: 1.5rem !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: auto !important;
+  opacity: 1;
+  z-index: 10 !important;
+}
+
+/* Mobile Toggle Trigger */
+.navbar-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1010;
+  outline: none;
+}
+
+/* Mobile Menu overlay drawer with scroll support */
+.navbar-menu-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1005;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 6rem 1.5rem 3rem 1.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-menu-list {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  width: 75%;
+  max-width: 320px;
+  padding-left: 0;
+}
+
+.mobile-nav-link {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.mobile-menu-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.nav-actions-container {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 0.75rem !important;
+  align-items: center !important;
+}
+
+/* Premium Dual Navbar Buttons styling */
+.btn-nav-primary {
+  background-color: var(--resort-green-deep) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--resort-green-deep) !important;
+  border-radius: 50px !important;
+  padding: 0.55rem 1.4rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2) !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-nav-primary:hover {
+  background-color: var(--resort-green-medium) !important;
+  border-color: var(--resort-green-medium) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(27, 94, 32, 0.35) !important;
+}
+
+.btn-nav-secondary {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 50px !important;
+  padding: 0.55rem 1.4rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn-nav-secondary:hover {
+  background-color: #ffffff !important;
+  color: var(--resort-text-dark) !important;
+  border-color: #ffffff !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Laptop viewport spacing scales to prevent absolute overlaps */
+@media (max-width: 1280px) and (min-width: 1025px) {
+  .nav-menu-links {
+    gap: 1.25rem !important;
+  }
+  .btn-nav-primary,
+  .btn-nav-secondary {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .nav-menu-links,
+  .nav-actions-section {
+    display: none;
+  }
+  
+  .navbar-toggle-btn {
+    display: block !important;
+    position: absolute !important;
+    right: 1.5rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+  
+  .nav-branding-section {
+    position: absolute !important;
+    left: 1.5rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+  }
+
+  .decor-line {
+    display: none !important;
+  }
+
+  .navbar-initial {
+    padding-top: 0 !important;
+    height: 80px !important;
+    background-color: transparent !important;
+  }
+  
+  .navbar-inner-container {
+    position: relative !important;
+    height: 80px !important;
+  }
+  
+  /* Responsive Logo Size in Mobile */
+  .navbar-inner-container img {
+    height: 52px !important;
+  }
+}

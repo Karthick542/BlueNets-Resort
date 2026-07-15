@@ -1,0 +1,264 @@
+.rooms-section {
+  background-color: var(--resort-bg-cream);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+}
+
+.room-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.room-card-img-wrap {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+  background-color: var(--resort-green-glow);
+}
+
+.room-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-card:hover .room-card-img {
+  transform: scale(1.06);
+}
+
+.room-card-price {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background-color: var(--resort-green-deep);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: baseline;
+  gap: 0.15rem;
+}
+
+.price-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.price-unit {
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.room-card-body {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.room-card-title {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--resort-green-deep);
+}
+
+.room-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+}
+
+/* Specs pills grid */
+.room-card-specs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.spec-pill {
+  background-color: var(--resort-bg-cream);
+  border: 1px solid rgba(27, 94, 32, 0.05);
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--resort-text-muted);
+  font-weight: 500;
+}
+
+.room-card-btn {
+  margin-top: auto;
+}
+
+/* Modal Drawer / Backdrop with Scroll Support */
+.room-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(30, 41, 34, 0.55); /* custom translucent forest tint backdrop */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: flex-start; /* Start from top to allow scrolling */
+  justify-content: center;
+  z-index: 2000;
+  padding: 2rem 1.5rem;
+  overflow-y: auto; /* Scrollable backdrop */
+}
+
+.room-modal-content {
+  background-color: var(--resort-bg-white);
+  padding: 3rem;
+  border-radius: var(--radius-md);
+  max-width: 820px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin-top: auto;
+  margin-bottom: auto; /* Vertically center if viewport height allows */
+}
+
+.modal-header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(27, 94, 32, 0.1);
+  padding-bottom: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.modal-room-title {
+  font-size: 1.85rem;
+  margin-bottom: 0;
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2.25rem;
+  color: var(--resort-text-muted);
+  cursor: pointer;
+  line-height: 1;
+  transition: var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  color: var(--resort-green-deep);
+}
+
+.modal-room-img {
+  max-height: 280px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.modal-room-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.modal-amenities-title {
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--resort-green-deep);
+}
+
+.modal-amenities-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.modal-amenity-tag {
+  background-color: var(--resort-green-glow);
+  color: var(--resort-green-deep);
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 50px;
+}
+
+/* Stay Package Selection Cards */
+.packages-selection-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.pkg-option-card {
+  padding: 1.25rem;
+  border: 1px solid rgba(27, 94, 32, 0.12);
+  border-radius: 8px;
+  background-color: var(--resort-bg-white);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(30, 41, 34, 0.02);
+}
+
+.pkg-option-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--resort-green-medium);
+  background-color: var(--resort-bg-cream);
+  box-shadow: 0 4px 12px rgba(30, 41, 34, 0.05);
+}
+
+.pkg-option-card.selected-pkg {
+  border: 2px solid var(--resort-green-medium);
+  background-color: var(--resort-green-glow);
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.1);
+}
+
+.pkg-option-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--resort-green-deep);
+}
+
+.pkg-selected-indicator {
+  background-color: var(--resort-green-medium);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(46, 125, 50, 0.2);
+}
+
+.border-start-lg {
+  border-left: 1px solid rgba(27, 94, 32, 0.1);
+}
+
+@media (max-width: 991px) {
+  .border-start-lg {
+    border-left: none;
+    border-top: 1px solid rgba(27, 94, 32, 0.1);
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .room-modal-content {
+    padding: 1.5rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal-header-section {
+    margin-bottom: 1.25rem;
+  }
+  .modal-room-title {
+    font-size: 1.45rem;
+  }
+  .room-card-body {
+    padding: 1.5rem;
+  }
+}

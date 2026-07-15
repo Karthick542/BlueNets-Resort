@@ -1,0 +1,357 @@
+:root {
+  /* Design Colors - Green Palette & Cream Theme */
+  --resort-green-deep: #1B5E20;       /* Rich Deep Forest Green */
+  --resort-green-medium: #2E7D32;     /* Medium Leaf Green */
+  --resort-green-light: #81C784;      /* Soft Sage / Grass Green */
+  --resort-green-glow: rgba(46, 125, 50, 0.15);
+  
+  --resort-bg-cream: #FAF9F6;         /* Organic Linen/Cream Base */
+  --resort-bg-white: #FFFFFF;         /* White Card Panels */
+  --resort-text-dark: #1E2922;        /* Dark Charcoal-Green */
+  --resort-text-muted: #4A5D52;       /* Soft Gray-Green Slate */
+  
+  /* Fonts */
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  
+  /* Dimensions */
+  --header-height: 80px;
+  --max-width: 1200px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 32px;
+  
+  /* Shadows */
+  --shadow-sm: 0 4px 10px rgba(27, 94, 32, 0.04);
+  --shadow-md: 0 12px 30px rgba(27, 94, 32, 0.08);
+  --shadow-lg: 0 24px 60px rgba(27, 94, 32, 0.12);
+  
+  /* Transitions */
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.3s ease;
+}
+
+/* Reset & Baseline */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: initial; /* Essential for Lenis smooth scrolling */
+}
+
+/* Lenis Custom Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--resort-bg-cream);
+  color: var(--resort-text-dark);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--resort-green-deep);
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+/* Layout Utilities */
+.container-resort {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.section-padding {
+  padding: 8rem 0;
+}
+
+/* Section Header */
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem auto;
+}
+
+.section-subtitle {
+  font-family: var(--font-body);
+  color: var(--resort-green-medium);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.section-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.section-desc {
+  color: var(--resort-text-muted);
+  font-size: 1.05rem;
+}
+
+/* Buttons */
+.btn-resort {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.btn-resort-primary {
+  background-color: var(--resort-green-deep);
+  color: #fff;
+}
+
+.btn-resort-primary:hover {
+  background-color: #0c3310;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(27, 94, 32, 0.25);
+}
+
+.btn-resort-secondary {
+  background-color: var(--resort-green-medium);
+  color: #fff;
+}
+
+.btn-resort-secondary:hover {
+  background-color: var(--resort-green-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.25);
+}
+
+.btn-resort-outline {
+  background: transparent;
+  border: 1px solid var(--resort-green-deep);
+  color: var(--resort-green-deep);
+}
+
+.btn-resort-outline:hover {
+  background-color: var(--resort-green-deep);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.btn-resort-white-outline {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-resort-white-outline:hover {
+  background-color: #fff;
+  color: var(--resort-green-deep);
+  transform: translateY(-2px);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.glass-panel-dark {
+  background: rgba(27, 94, 32, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Cards & Containers with Premium Corner Glow */
+.resort-card {
+  background-color: var(--resort-bg-white);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(27, 94, 32, 0.08) !important;
+  transition: var(--transition-smooth);
+  overflow: hidden;
+  border: 1.5px solid rgba(27, 94, 32, 0.15) !important;
+}
+
+.resort-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: var(--resort-green-medium) !important;
+  box-shadow: 0 20px 45px rgba(27, 94, 32, 0.22) !important;
+}
+
+/* Grid helper utilities */
+.resort-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  align-items: center;
+}
+
+.resort-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.resort-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--resort-bg-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--resort-green-light);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--resort-green-medium);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  .resort-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .resort-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .section-padding {
+    padding: 6rem 0;
+  }
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .resort-grid-2, .resort-grid-3, .resort-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .container-resort {
+    padding: 0 1.5rem;
+  }
+  .section-padding {
+    padding: 5rem 0;
+  }
+}
+
+/* Floating Actions panel */
+.floating-widgets-wrap {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.floating-book-btn {
+  background-color: var(--resort-green-medium);
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.floating-book-btn:hover {
+  background-color: var(--resort-green-deep);
+  transform: translateY(-2px);
+}
+
+.back-to-top-btn {
+  background-color: var(--resort-bg-white);
+  color: var(--resort-green-deep);
+  border: 1px solid rgba(27, 94, 32, 0.15);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--resort-bg-cream);
+  color: var(--resort-green-medium);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .floating-widgets-wrap {
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  .floating-book-btn {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.85rem;
+  }
+  .back-to-top-btn {
+    width: 42px;
+    height: 42px;
+  }
+}
