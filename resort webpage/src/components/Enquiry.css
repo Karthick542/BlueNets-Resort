@@ -8,6 +8,18 @@
   padding-bottom: 5rem;
 }
 
+/* Row centering for the card */
+.enquiry-section .row.justify-content-center {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.enquiry-section .col-lg-8 {
+  width: 100% !important;
+  max-width: 800px !important; /* Constrain card width to exact user specifications */
+}
+
 /* Form Container Card matching user mockup */
 .enquiry-form-page-card {
   padding: 3.5rem;
@@ -18,6 +30,7 @@
   width: 100%;
 }
 
+/* Center-aligned premium serif title */
 .enquiry-card-title {
   color: var(--resort-green-deep);
   font-family: var(--font-title);
@@ -25,6 +38,7 @@
   font-weight: 700;
   margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
+  text-align: center;
 }
 
 .enquiry-whatsapp-form {
@@ -63,8 +77,7 @@
 }
 
 .input-group-icon {
-  color: var(--resort-green-deep);
-  opacity: 0.65;
+  color: #8c9b9c; /* Sleek grey icon matching the mockup specs */
   margin-right: 0.85rem;
   display: flex;
   align-items: center;
@@ -163,14 +176,14 @@
   display: block;
 }
 
-/* Action button styled like the tan/brown submit button in the mockup */
+/* Action button restored back to the premium resort green theme */
 .btn-whatsapp-submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #b38b59; /* Tannish-brown mockup theme */
+  background-color: var(--resort-green-deep); /* Restored to premium green */
   color: #ffffff;
-  border: 1px solid #b38b59;
+  border: 1px solid var(--resort-green-deep);
   border-radius: 8px;
   padding: 1.1rem;
   font-weight: 600;
@@ -181,10 +194,10 @@
 }
 
 .btn-whatsapp-submit:hover {
-  background-color: #a07a4b;
-  border-color: #a07a4b;
+  background-color: #0c3310;
+  border-color: #0c3310;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(179, 139, 89, 0.25);
+  box-shadow: 0 8px 25px rgba(27, 94, 32, 0.25);
 }
 
 @media (max-width: 768px) {
