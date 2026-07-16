@@ -4,6 +4,8 @@
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
+  padding-top: 120px; /* Offset the 80px fixed sticky header on subpage */
+  padding-bottom: 5rem;
 }
 
 .booking-form-page-card {
@@ -14,6 +16,7 @@
   background-color: var(--resort-bg-white);
 }
 
+/* Booking Form Grid Layout */
 .booking-form {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr);
@@ -26,6 +29,13 @@
 
 .booking-form .col-12 {
   grid-column: span 2;
+}
+
+/* Remove default Bootstrap horizontal padding inside CSS Grid cells for label alignment */
+.booking-form .col-md-6,
+.booking-form .col-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .booking-form input,
@@ -51,6 +61,11 @@
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
+/* Force action buttons to span full width of form */
+.booking-form button[type="submit"] {
+  width: 100% !important;
+}
+
 @media (max-width: 768px) {
   .booking-form-page-card {
     padding: 1.75rem;
@@ -61,5 +76,19 @@
   }
   .booking-form .col-md-6 {
     grid-column: span 1;
+  }
+}
+
+/* Apply centering on desktop viewports */
+@media (min-width: 992px) {
+  .booking-section .row.justify-content-center {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100%;
+  }
+  
+  .booking-section .col-lg-8 {
+    width: 66.666667% !important;
+    max-width: 800px;
   }
 }

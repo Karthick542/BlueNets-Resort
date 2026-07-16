@@ -79,13 +79,17 @@ export default function Navbar() {
     }
   };
 
+  // The header should be sticky/fixed and show CTA buttons either if scrolled down on the Home page,
+  // or on any subpages (like /booking or /enquiry) to prevent content overlaps.
+  const shouldBeSticky = location.pathname !== '/' || isSticky;
+
   return (
     <motion.nav 
       layout
-      className={`navbar-resort ${isSticky ? 'navbar-sticky' : 'navbar-initial'}`}
+      className={`navbar-resort ${shouldBeSticky ? 'navbar-sticky' : 'navbar-initial'}`}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className={`container-resort navbar-inner-container ${isSticky ? 'inner-sticky' : 'inner-initial'}`}>
+      <div className={`container-resort navbar-inner-container ${shouldBeSticky ? 'inner-sticky' : 'inner-initial'}`}>
         
         {/* Logo and Branding Link */}
         <motion.div 
@@ -94,7 +98,7 @@ export default function Navbar() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           <a href="#home" onClick={handleLogoClick} className="nav-logo-anchor">
-            <Logo size={isSticky ? 64 : 150} />
+            <Logo size={shouldBeSticky ? 64 : 150} />
           </a>
         </motion.div>
 
@@ -123,7 +127,7 @@ export default function Navbar() {
           className="nav-actions-section"
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          {isSticky && (
+          {shouldBeSticky && (
             <div className="nav-actions-container">
               <button 
                 onClick={() => { setIsOpen(false); navigate('/enquiry'); }} 

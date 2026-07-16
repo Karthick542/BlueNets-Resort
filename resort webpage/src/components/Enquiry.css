@@ -4,6 +4,8 @@
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
+  padding-top: 120px; /* Offset the 80px fixed sticky header on subpage */
+  padding-bottom: 5rem;
 }
 
 .enquiry-info-panel {
@@ -48,6 +50,7 @@
   background-color: var(--resort-bg-white);
 }
 
+/* Enquiry Form Grid Layout */
 .enquiry-form {
   display: grid !important;
   grid-template-columns: repeat(2, 1fr);
@@ -60,6 +63,13 @@
 
 .enquiry-form .col-12 {
   grid-column: span 2;
+}
+
+/* Remove default Bootstrap horizontal padding inside CSS Grid cells for label alignment */
+.enquiry-form .col-md-6,
+.enquiry-form .col-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .enquiry-form input,
@@ -83,6 +93,11 @@
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
+/* Force action buttons to span full width of form */
+.enquiry-form button[type="submit"] {
+  width: 100% !important;
+}
+
 .enquiry-success-wrapper {
   min-height: 420px;
 }
@@ -97,5 +112,25 @@
   }
   .enquiry-form .col-md-6 {
     grid-column: span 1;
+  }
+}
+
+/* Apply flex-row side-by-side alignment on desktop viewports */
+@media (min-width: 992px) {
+  .enquiry-section .row.align-items-stretch {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 3rem !important;
+    align-items: stretch !important;
+  }
+  
+  .enquiry-section .col-lg-5 {
+    flex: 5 !important;
+    max-width: 41.666667%;
+  }
+  
+  .enquiry-section .col-lg-7 {
+    flex: 7 !important;
+    max-width: 58.333333%;
   }
 }
