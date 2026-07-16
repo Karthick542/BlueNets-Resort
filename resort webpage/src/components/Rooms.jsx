@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { motion as m, AnimatePresence as Ap } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Maximize2, Users, Bed, Eye, ArrowRight, Check } from 'lucide-react';
 import './Rooms.css';
 
@@ -7,6 +8,7 @@ import woodlandSuite from '../assets/images/rooms/woodland-suite.jpg';
 import treehouseCabin from '../assets/images/rooms/treehouse-cabin.jpg';
 import poolSanctuary from '../assets/images/rooms/pool-sanctuary.jpg';
 
+// Static options representing different lodge choices
 const roomOptions = [
   {
     id: 1,
@@ -23,98 +25,70 @@ const roomOptions = [
       { 
         name: "Room Only", 
         price: "₹3,500", 
-        inclusions: ["Cardamom Plantation Stay", "High-speed Wi-Fi", "Free Valet Parking", "Garden Walking Access"] 
+        inclusions: ["Luxury Cottage Stay", "Welcome Estate Juice", "Guided Valley Walk"]
       },
       { 
-        name: "Room + Breakfast", 
+        name: "Breakfast Inclusive", 
         price: "₹4,200", 
-        inclusions: ["Cardamom Plantation Stay", "Complimentary Organic Breakfast", "High-speed Wi-Fi", "Free Valet Parking"] 
-      },
-      { 
-        name: "Room + Breakfast + Dinner", 
-        price: "₹5,500", 
-        inclusions: ["Cardamom Plantation Stay", "Organic Breakfast", "Traditional Kerala Sadya Dinner", "High-speed Wi-Fi"] 
-      },
-      { 
-        name: "Family Getaway Package", 
-        price: "₹7,200", 
-        inclusions: ["Plantation Stay (Extra bed included)", "All Meals included", "Guided Estate Trekking", "Evening Bonfire Gathering"] 
+        inclusions: ["Luxury Cottage Stay", "Kerala Banana Leaf Feast", "Sunrise Guided Valley Walk"]
       }
     ]
   },
   {
     id: 2,
     name: "Canopy Treehouse Villa",
-    startPrice: "₹6,000",
+    startPrice: "₹5,500",
     size: "620 sq ft",
     capacity: "2 Guests",
-    bed: "Royal Emperor Bed",
-    view: "Mist & Valley Views",
+    bed: "Premium King Bed",
+    view: "Misty Valley & Forest Canopy",
     image: treehouseCabin,
-    desc: "Suspended 35 feet high amidst ancient trees, this high-end sanctuary offers panoramic views of Munnar's rolling fog fields from a private jacuzzi deck.",
-    amenities: ["Deck Jacuzzi", "Complimentary Wine", "Butler Service", "Aroma Diffuser", "Valley Balcony"],
+    desc: "Perched 20 feet high in a rustic hill station forest, this wooden sanctuary provides sweeping panoramic views of the Western Ghats.",
+    amenities: ["Free Wi-Fi", "Espresso Machine", "Elevated Private Deck", "Soaking Tub", "Mini Bar"],
     packages: [
       { 
-        name: "Room Only", 
-        price: "₹6,000", 
-        inclusions: ["Canopy Treehouse Stay", "Private Valley View Deck", "High-speed Wi-Fi", "Espresso Bar Access"] 
+        name: "Breakfast Inclusive", 
+        price: "₹5,500", 
+        inclusions: ["Treehouse Stay", "Cardamom Breakfast Basket", "Waterfall Hiking Guide"] 
       },
       { 
-        name: "Room + Breakfast", 
-        price: "₹6,800", 
-        inclusions: ["Canopy Treehouse Stay", "Complimentary Breakfast", "Valley View Deck", "High-speed Wi-Fi"] 
-      },
-      { 
-        name: "Room + Breakfast + Dinner", 
-        price: "₹8,200", 
-        inclusions: ["Canopy Treehouse Stay", "Breakfast & Candlelight Dinner", "Valley View Deck", "High-speed Wi-Fi"] 
-      },
-      { 
-        name: "Honeymoon Special", 
-        price: "₹10,500", 
-        inclusions: ["Treehouse Stay", "All Meals", "Forest Couple Spa therapy (60m)", "Jacuzzi flower candle setup"] 
+        name: "Full Board Wilderness Experience", 
+        price: "₹7,200", 
+        inclusions: ["Treehouse Stay", "All Culinary Feasts", "Guided Plantation Safari", "Campfire Grill"] 
       }
     ]
   },
   {
     id: 3,
     name: "Valley Infinity Pool Sanctuary",
-    startPrice: "₹12,000",
-    size: "980 sq ft",
-    capacity: "4 Guests",
-    bed: "2 Royal King Beds",
-    view: "360° Western Ghats Peaks",
+    startPrice: "₹8,500",
+    size: "950 sq ft",
+    capacity: "3 Guests (Max)",
+    bed: "Grand Emperor Bed",
+    view: "Infinity Pool & Mountain Horizon",
     image: poolSanctuary,
-    desc: "Our ultimate signature villa features a heated private infinity plunge pool, spacious separate living lounge, private chef options, and absolute privacy.",
-    amenities: ["Private Pool", "Home Theatre", "Private Butler", "In-villa Dining", "Free Airport Transfer"],
+    desc: "A premium private villa featuring a personal heated infinity pool hanging over the misty valley edge for ultimate luxury.",
+    amenities: ["Free Wi-Fi", "Wine Cellar Fridge", "Heated Private Pool", "Outdoor Jacuzzi", "24/7 Butler Service"],
     packages: [
       { 
-        name: "Room Only", 
-        price: "₹12,000", 
-        inclusions: ["Infinity Pool Villa Stay", "Private Plunge Pool Access", "Personal Butler Service", "High-speed Wi-Fi"] 
+        name: "Honeymoon / Couple Special", 
+        price: "₹8,500", 
+        inclusions: ["Private Villa Stay", "Infinity Pool Access", "Private Chef Dining", "Ayurvedic Aromatherapy"] 
       },
       { 
-        name: "Room + Breakfast", 
-        price: "₹13,000", 
-        inclusions: ["Infinity Pool Villa Stay", "Floating Pool Breakfast", "Personal Butler Service", "High-speed Wi-Fi"] 
-      },
-      { 
-        name: "Room + Breakfast + Dinner", 
-        price: "₹15,000", 
-        inclusions: ["Infinity Pool Villa Stay", "Floating Breakfast & Deck Dinner", "Private Butler", "High-speed Wi-Fi"] 
-      },
-      { 
-        name: "Luxury Family Explorer", 
-        price: "₹18,000", 
-        inclusions: ["Infinity Pool Villa Stay", "All Meals (Private Chef Options)", "Guided Jeep Safari", "Bonfire Skewers Night"] 
+        name: "Grand Wilderness Board", 
+        price: "₹10,500", 
+        inclusions: ["Private Villa Stay", "Infinity Pool Access", "All Premium Feasts", "Private Tea Sommelier Session", "Airport Shuttle Transfer"] 
       }
     ]
   }
 ];
 
-export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
+export default function Rooms({ setSelectedRoomChoice }) {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedPkgIndex, setSelectedPkgIndex] = useState(0);
+  
+  const navigate = useNavigate();
 
   const handleOpenRoomModal = (room) => {
     setSelectedRoom(room);
@@ -124,6 +98,7 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
   return (
     <section className="section-padding rooms-section" id="rooms">
       <div className="container-resort">
+        
         {/* Section Header */}
         <div className="section-header">
           <span className="section-subtitle">Luxury Sanctuary</span>
@@ -134,7 +109,7 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
         </div>
 
         {/* Rooms Grid */}
-        <m.div 
+        <motion.div 
           className="resort-grid-3"
           initial="hidden"
           whileInView="visible"
@@ -145,7 +120,7 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
           }}
         >
           {roomOptions.map((room) => (
-            <m.div 
+            <motion.div 
               key={room.id}
               className="room-card resort-card"
               variants={{
@@ -192,21 +167,21 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
                   Explore Stay Packages <ArrowRight size={16} className="ms-2" />
                 </button>
               </div>
-            </m.div>
+            </motion.div>
           ))}
-        </m.div>
+        </motion.div>
       </div>
 
       {/* Slide-out details drawer / modal */}
-      <Ap>
+      <AnimatePresence>
         {selectedRoom && (
-          <m.div 
+          <motion.div 
             className="room-modal-backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <m.div 
+            <motion.div 
               className="room-modal-content glass-panel"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -278,7 +253,7 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
                       onClick={() => {
                         setSelectedRoomChoice(selectedRoom.name);
                         setSelectedRoom(null);
-                        setCurrentView('booking');
+                        navigate('/booking');
                       }} 
                       className="btn-resort btn-resort-primary py-2 px-4"
                       style={{ border: 'none', cursor: 'pointer' }}
@@ -289,10 +264,10 @@ export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
                 </div>
 
               </div>
-            </m.div>
-          </m.div>
+            </motion.div>
+          </motion.div>
         )}
-      </Ap>
+      </AnimatePresence>
     </section>
   );
 }

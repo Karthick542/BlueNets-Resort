@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 import './Navbar.css';
 
+// Menu items representing sections of the home page
 const menuItems = [
   { label: 'Home', href: '#home' },
   { label: 'Rooms', href: '#rooms' },
@@ -15,13 +17,16 @@ const menuItems = [
   { label: 'Contact Us', href: '#contact' }
 ];
 
-export default function Navbar({ currentView, setCurrentView }) {
+export default function Navbar() {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  // Control navbar opacity and style shifts during scroll actions
   useEffect(() => {
     const handleScroll = () => {
-      // Toggle sticky style when user scrolls past 150px
       if (window.scrollY > 150) {
         setIsSticky(true);
       } else {
@@ -32,31 +37,45 @@ export default function Navbar({ currentView, setCurrentView }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleNavClick = (e, href) => {
+  /**
+   * Triggers redirection or smooth scrolling depending on current route.
+   */
+  const handleNavClick = (event, href) => {
     setIsOpen(false);
+    
     if (href.startsWith('#')) {
-      if (currentView !== 'home') {
-        e.preventDefault();
-        setCurrentView('home');
-        // Wait for page to render and trigger smooth scroll
+      if (location.pathname !== '/') {
+        // Redirection required first, followed by scroll action
+        event.preventDefault();
+        navigate('/');
         setTimeout(() => {
-          const el = document.querySelector(href);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
           }
         }, 300);
+      } else {
+        // Standard smooth scroll inside same page
+        event.preventDefault();
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
       }
     }
   };
 
-  const handleLogoClick = (e) => {
+  /**
+   * Action when clicking the branding logo
+   */
+  const handleLogoClick = (event) => {
     setIsOpen(false);
-    if (currentView !== 'home') {
-      e.preventDefault();
-      setCurrentView('home');
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 150);
+    if (location.pathname !== '/') {
+      event.preventDefault();
+      navigate('/');
+    } else {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -68,7 +87,7 @@ export default function Navbar({ currentView, setCurrentView }) {
     >
       <div className={`container-resort navbar-inner-container ${isSticky ? 'inner-sticky' : 'inner-initial'}`}>
         
-        {/* Branding section with layout shifts */}
+        {/* Logo and Branding Link */}
         <motion.div 
           layout 
           className="nav-branding-section"
@@ -79,7 +98,7 @@ export default function Navbar({ currentView, setCurrentView }) {
           </a>
         </motion.div>
 
-        {/* Navigation Menu */}
+        {/* Navigation links (Desktop Viewports) */}
         <motion.ul 
           layout 
           className="nav-menu-links"
@@ -89,8 +108,8 @@ export default function Navbar({ currentView, setCurrentView }) {
             <li key={index}>
               <a 
                 href={item.href} 
-                onClick={(e) => handleNavClick(e, item.href)}
-                className={`nav-link-resort-new ${currentView === 'home' && window.location.hash === item.href ? 'active-nav-link' : ''}`}
+                onClick={(event) => handleNavClick(event, item.href)}
+                className={`nav-link-resort-new ${location.pathname === '/' && window.location.hash === item.href ? 'active-nav-link' : ''}`}
               >
                 {item.label}
               </a>
@@ -98,7 +117,7 @@ export default function Navbar({ currentView, setCurrentView }) {
           ))}
         </motion.ul>
 
-        {/* Action buttons (Only active in sticky state) */}
+        {/* Sticky Action Buttons */}
         <motion.div 
           layout 
           className="nav-actions-section"
@@ -107,14 +126,14 @@ export default function Navbar({ currentView, setCurrentView }) {
           {isSticky && (
             <div className="nav-actions-container">
               <button 
-                onClick={() => { setIsOpen(false); setCurrentView('enquiry'); }} 
+                onClick={() => { setIsOpen(false); navigate('/enquiry'); }} 
                 className="btn-nav-secondary"
                 style={{ border: 'none', cursor: 'pointer' }}
               >
                 Enquiry Now
               </button>
               <button 
-                onClick={() => { setIsOpen(false); setCurrentView('booking'); }} 
+                onClick={() => { setIsOpen(false); navigate('/booking'); }} 
                 className="btn-nav-primary"
                 style={{ border: 'none', cursor: 'pointer' }}
               >
@@ -124,7 +143,7 @@ export default function Navbar({ currentView, setCurrentView }) {
           )}
         </motion.div>
 
-        {/* Mobile Toggle Button */}
+        {/* Hamburger Mobile Toggle Button */}
         <button 
           className="navbar-toggle-btn" 
           onClick={() => setIsOpen(!isOpen)} 
@@ -134,7 +153,7 @@ export default function Navbar({ currentView, setCurrentView }) {
         </button>
       </div>
 
-      {/* Mobile Menu Panel */}
+      {/* Navigation panel (Mobile Viewports) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -149,7 +168,7 @@ export default function Navbar({ currentView, setCurrentView }) {
                 <li key={index}>
                   <a 
                     href={item.href} 
-                    onClick={(e) => handleNavClick(e, item.href)}
+                    onClick={(event) => handleNavClick(event, item.href)}
                     className="mobile-nav-link text-white"
                   >
                     {item.label}
@@ -158,14 +177,14 @@ export default function Navbar({ currentView, setCurrentView }) {
               ))}
               <li className="mobile-menu-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
                 <button 
-                  onClick={() => { setIsOpen(false); setCurrentView('enquiry'); }} 
+                  onClick={() => { setIsOpen(false); navigate('/enquiry'); }} 
                   className="btn-nav-secondary text-center w-100"
                   style={{ border: 'none', cursor: 'pointer', padding: '0.75rem 0' }}
                 >
                   Enquiry Now
                 </button>
                 <button 
-                  onClick={() => { setIsOpen(false); setCurrentView('booking'); }} 
+                  onClick={() => { setIsOpen(false); navigate('/booking'); }} 
                   className="btn-nav-primary text-center w-100"
                   style={{ border: 'none', cursor: 'pointer', padding: '0.75rem 0' }}
                 >

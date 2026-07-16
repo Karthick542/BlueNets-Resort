@@ -1,19 +1,25 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { 
   Star, MapPin, Phone, Mail, Flame, Utensils, Compass, Users, Car, Wifi, Clock, ChefHat 
 } from 'lucide-react';
 import './Footer.css';
-import Logo from './Logo';
 
-export default function Footer({ setCurrentView }) {
-  const handleFooterLinkClick = (e, href) => {
+export default function Footer() {
+  const navigate = useNavigate();
+
+  /**
+   * Helper function to handle link scrolling and transitions.
+   * If not on the main Home route, routes there first, then scrolls down.
+   */
+  const handleFooterLinkClick = (event, href) => {
     if (href.startsWith('#')) {
-      e.preventDefault();
-      setCurrentView('home');
+      event.preventDefault();
+      navigate('/');
       setTimeout(() => {
-        const el = document.querySelector(href);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 300);
     }
@@ -49,16 +55,16 @@ export default function Footer({ setCurrentView }) {
           <div className="col-lg-2 col-md-6 footer-col">
             <h4 className="footer-col-title">Quick Links</h4>
             <ul className="footer-links-list list-unstyled d-flex flex-column gap-2">
-              <li><a href="#home" onClick={(e) => handleFooterLinkClick(e, '#home')}>Home</a></li>
-              <li><a href="#rooms" onClick={(e) => handleFooterLinkClick(e, '#rooms')}>Rooms & Suites</a></li>
-              <li><a href="#experiences" onClick={(e) => handleFooterLinkClick(e, '#experiences')}>Experiences</a></li>
-              <li><a href="#packages" onClick={(e) => handleFooterLinkClick(e, '#packages')}>Packages</a></li>
-              <li><a href="#gallery" onClick={(e) => handleFooterLinkClick(e, '#gallery')}>Gallery</a></li>
-              <li><a href="#dining" onClick={(e) => handleFooterLinkClick(e, '#dining')}>Dining</a></li>
+              <li><a href="#home" onClick={(event) => handleFooterLinkClick(event, '#home')}>Home</a></li>
+              <li><a href="#rooms" onClick={(event) => handleFooterLinkClick(event, '#rooms')}>Rooms & Suites</a></li>
+              <li><a href="#experiences" onClick={(event) => handleFooterLinkClick(event, '#experiences')}>Experiences</a></li>
+              <li><a href="#packages" onClick={(event) => handleFooterLinkClick(event, '#packages')}>Packages</a></li>
+              <li><a href="#gallery" onClick={(event) => handleFooterLinkClick(event, '#gallery')}>Gallery</a></li>
+              <li><a href="#dining" onClick={(event) => handleFooterLinkClick(event, '#dining')}>Dining</a></li>
             </ul>
           </div>
 
-          {/* Column 3: Contact Us */}
+          {/* Column 3: Contact details */}
           <div className="col-lg-3 col-md-6 footer-col">
             <h4 className="footer-col-title">Contact Us</h4>
             <div className="footer-contact-list d-flex flex-column gap-3">
@@ -87,7 +93,6 @@ export default function Footer({ setCurrentView }) {
               </div>
 
               <div className="footer-contact-item d-flex gap-2">
-                {/* Inline SVG for Instagram */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-success-light flex-shrink-0 mt-1"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                 <div>
                   <span className="d-block text-white small">@bluenestresort</span>
@@ -96,7 +101,6 @@ export default function Footer({ setCurrentView }) {
               </div>
 
               <div className="footer-contact-item d-flex gap-2">
-                {/* Inline SVG for Facebook */}
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-success-light flex-shrink-0 mt-1"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
                 <div>
                   <span className="d-block text-white small">@bluenestresort</span>
@@ -114,7 +118,7 @@ export default function Footer({ setCurrentView }) {
                 <Flame size={14} className="text-success-light" /> <span>Free Fire Camp Nights</span>
               </div>
               <div className="service-item d-flex align-items-center gap-2">
-                <Utensils size={14} className="text-success-light" /> <span>Authentic South Indian Cuisine</span>
+                <Utensils size={14} className="text-success-light" /> <span>South Indian Culinary Feast</span>
               </div>
               <div className="service-item d-flex align-items-center gap-2">
                 <Compass size={14} className="text-success-light" /> <span>Tea Plantation Tours</span>
@@ -132,7 +136,7 @@ export default function Footer({ setCurrentView }) {
                 <Clock size={14} className="text-success-light" /> <span>24/7 Room Service</span>
               </div>
               <div className="service-item d-flex align-items-center gap-2">
-                <ChefHat size={14} className="text-success-light" /> <span>Kitchenette & Open Space Cooking</span>
+                <ChefHat size={14} className="text-success-light" /> <span>Kitchenette & Open Cooking</span>
               </div>
             </div>
           </div>
@@ -144,7 +148,7 @@ export default function Footer({ setCurrentView }) {
           <div className="copyright-text small text-white-50">
             &copy; {new Date().getFullYear()} BlueNest Resort All rights reserved. | Gudarala Rd, Mattupetty, Munnar, Kerala 685612  
           </div>
-          <a href="#contact" onClick={(e) => handleFooterLinkClick(e, '#contact')} className="btn-footer-cta btn-resort">
+          <a href="#contact" onClick={(event) => handleFooterLinkClick(event, '#contact')} className="btn-footer-cta btn-resort">
             Contact Us Today
           </a>
         </div>
@@ -153,4 +157,3 @@ export default function Footer({ setCurrentView }) {
     </footer>
   );
 }
-

@@ -1,70 +1,69 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, Calendar, Coffee, Map } from 'lucide-react';
+import { Check, Compass, Eye, Heart } from 'lucide-react';
 import './Packages.css';
 
-const pkgsData = [
+// Content arrays representing curated stay packages
+const packageOptions = [
   {
     id: 1,
-    name: "Misty Cardamom Honeymoon",
-    price: "₹18,500",
-    duration: "3 Days / 2 Nights",
-    tag: "Romantic Stay",
-    desc: "A cozy romantic escape set in the high-elevation valleys. Includes candlelight estate dinner and massage therapies.",
+    name: "Wilderness Trekking & Safari",
+    tagline: "For Adventure Seekers",
+    price: "₹12,500 / 2 Nights",
+    icon: <Compass size={24} />,
     features: [
-      "Luxury Valley View Suite",
-      "Private Candlelight Dining",
-      "60 mins Couples Forest Spa",
-      "Guided Plantation Trekking"
-    ],
-    bgIcon: <Sparkles className="pkg-bg-icon" />
+      "Guided Plantation Valley Walk",
+      "Off-road Jeep Wildlife Safari",
+      "Complimentary Sunrise Trekking",
+      "Log-Fire BBQ Night Dinner"
+    ]
   },
   {
     id: 2,
-    name: "Ayurvedic Health Retreat",
-    price: "₹28,500",
-    duration: "5 Days / 4 Nights",
-    tag: "Wellness Plan",
-    desc: "Restore your core wellness with personalized daily Ayurvedic healing therapies and meditation sessions.",
+    name: "Misty Cardamom Honeymoon",
+    tagline: "For Romantics & Couples",
+    price: "₹18,900 / 2 Nights",
+    icon: <Heart size={24} />,
     features: [
-      "Organic Premium Cottage",
-      "Daily Doctor Consultations",
-      "Morning Yoga & Guided Meds",
-      "Customized Satvik Diet Meals"
-    ],
-    bgIcon: <Coffee className="pkg-bg-icon" />
+      "Teak Wood Suite or Canopy Treehouse stay",
+      "Ayurvedic Couple Massage Spa session",
+      "Candlelit Dinner by the Cardamom Groves",
+      "Private Sommelier Tea tasting session"
+    ]
   },
   {
     id: 3,
-    name: "Weekend Monsoon Caravan",
-    price: "₹9,500",
-    duration: "2 Days / 1 Night",
-    tag: "Adventure Getaway",
-    desc: "Experience Munnar's rains. Hike through damp forest lanes and warm up by the evening log fire grills.",
+    name: "Estate Horizon Sanctuary",
+    tagline: "For Rejuvenation & Quiet",
+    price: "₹24,500 / 3 Nights",
+    icon: <Eye size={24} />,
     features: [
-      "Heritage Lodge Stay",
-      "Estate Guided Trekking",
-      "Log Fire Barbecue Dinner",
-      "Fresh Tea Plucking Session"
-    ],
-    bgIcon: <Map className="pkg-bg-icon" />
+      "Valley Infinity Pool Villa stay",
+      "Private Ayurvedic consultation",
+      "Organic farm-to-table food board",
+      "Personal Butler service & airport shuttle transfer"
+    ]
   }
 ];
 
-export default function Packages({ setCurrentView, setSelectedPackageChoice }) {
+export default function Packages({ setSelectedPackageChoice }) {
+  const navigate = useNavigate();
+
   return (
     <section className="section-padding packages-section" id="packages">
       <div className="container-resort">
+        
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">Excursions & Offers</span>
-          <h2 className="section-title">Special Packages</h2>
+          <span className="section-subtitle">Curated Stay Experiences</span>
+          <h2 className="section-title">Special Packages & Retreats</h2>
           <p className="section-desc">
-            Tailored stays crafted to let you discover adventure, romance, or pure healing relaxation.
+            Enhance your Munnar holiday with our all-inclusive activity packages. Selected retreats combine luxury stay slots with plantation tours and local safaris.
           </p>
         </div>
 
-        {/* Grid display */}
+        {/* Packages Grid */}
         <motion.div 
           className="resort-grid-3"
           initial="hidden"
@@ -75,8 +74,8 @@ export default function Packages({ setCurrentView, setSelectedPackageChoice }) {
             visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
           }}
         >
-          {pkgsData.map((pkg) => (
-            <motion.div
+          {packageOptions.map((pkg) => (
+            <motion.div 
               key={pkg.id}
               className="package-card resort-card"
               variants={{
@@ -85,43 +84,33 @@ export default function Packages({ setCurrentView, setSelectedPackageChoice }) {
               }}
               whileHover={{ y: -8 }}
             >
-              {/* Background Icon */}
-              {pkg.bgIcon}
-
-              {/* Tag and Title */}
-              <span className="package-tag-badge text-uppercase fw-bold">
-                {pkg.tag}
-              </span>
-              <h3 className="package-title">{pkg.name}</h3>
-              <div className="package-duration-row border-bottom pb-3 mb-3 d-flex align-items-center">
-                <Calendar size={14} className="me-2 text-success" />
-                <span className="small text-muted">{pkg.duration}</span>
+              {/* Package Header details */}
+              <div className="package-card-header text-center mb-4">
+                <div className="package-icon-wrap mx-auto mb-3">
+                  {pkg.icon}
+                </div>
+                <span className="package-tagline">{pkg.tagline}</span>
+                <h3 className="package-title mt-2 mb-3">{pkg.name}</h3>
+                <div className="package-rate text-success fw-bold">{pkg.price}</div>
               </div>
 
-              {/* Price */}
-              <div className="package-price-row mb-3">
-                <span className="price-label small text-muted">Starts from</span>
-                <span className="price-val h3 fw-bold text-success d-block">{pkg.price}</span>
-              </div>
-
-              <p className="package-desc text-muted small mb-4">{pkg.desc}</p>
-
-              {/* Features list */}
-              <div className="package-features-list mb-4">
-                <h4 className="features-title small text-uppercase fw-bold text-success mb-2">Package Inclusions:</h4>
-                <ul className="features-bullets small list-unstyled">
-                  {pkg.features.map((feat, idx) => (
-                    <li key={idx} className="mb-2 d-flex align-items-center">
-                      <span className="bullet-check text-success me-2">✓</span> {feat}
+              {/* Package Inclusions list */}
+              <div className="package-card-body mb-4">
+                <ul className="package-inclusions-list list-unstyled ps-0">
+                  {pkg.features.map((feature, idx) => (
+                    <li key={idx} className="small d-flex align-items-start gap-2 mb-3">
+                      <span className="check-bullet text-success"><Check size={14} /></span>
+                      <span className="text-muted">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
+              {/* Action Button */}
               <button 
                 onClick={() => {
                   setSelectedPackageChoice(pkg.name);
-                  setCurrentView('enquiry');
+                  navigate('/enquiry');
                 }} 
                 className="btn-resort btn-resort-outline w-100 mt-auto"
                 style={{ cursor: 'pointer' }}

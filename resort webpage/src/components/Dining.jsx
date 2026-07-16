@@ -1,56 +1,58 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Coffee, Leaf, Flame } from 'lucide-react';
+import { ChefHat, Flame, Utensils } from 'lucide-react';
 import './Dining.css';
 
-import cardamomBreakfast from '../assets/images/dining/cardamom-breakfast.jpg';
 import bananaLeafSadya from '../assets/images/dining/banana-leaf-sadya.jpg';
+import cardamomBreakfast from '../assets/images/dining/cardamom-breakfast.jpg';
 import logFireBbq from '../assets/images/dining/log-fire-bbq.jpg';
 
+// Content arrays representing signature culinary offerings
 const diningOffers = [
   {
     id: 1,
-    title: "Organic Cardamom Breakfast",
-    category: "Morning Harvest",
-    price: "Complimentary Stay Offer",
-    desc: "Start your day with freshly brewed high-grown black tea, organic forest wild honey, and steam appam stews.",
-    icon: <Coffee size={20} />,
-    image: cardamomBreakfast
-  },
-  {
-    id: 2,
     title: "Kerala Banana Leaf Sadya",
-    category: "Traditional Feast",
-    price: "₹650 per guest",
-    desc: "An authentic local culinary experience featuring 15+ organic vegetarian delicacies served fresh on banana leaves.",
-    icon: <Leaf size={20} />,
+    desc: "Savor a traditional feast of 24+ vegetarian items served on fresh banana leaves, including red rice, aviyal, sambar, and payasam.",
+    price: "₹1,200 per guest",
+    icon: <ChefHat size={20} />,
     image: bananaLeafSadya
   },
   {
+    id: 2,
+    title: "Cardamom Groves Breakfast",
+    desc: "Wake up to fresh estate cardamom-infused teas, steam idlis, and crispy appams served directly in a scenic garden plantation spot.",
+    price: "Complimentary (Select Packages)",
+    icon: <Utensils size={20} />,
+    image: cardamomBreakfast
+  },
+  {
     id: 3,
-    title: "High Peak Log Fire Barbecue",
-    category: "Evening Gathering",
-    price: "₹1,200 per guest",
-    desc: "Gather under the stars for open log campfire barbecues. Enjoy local spice-marinated skewers, flatbreads, and folk music.",
+    title: "Log-Fire Barbecue Nights",
+    desc: "Gather under starlit Munnar skies for hot grilled skewered meats, jacket potatoes, and toasted marshmallows by a warm crackling campfire.",
+    price: "₹1,800 per package",
     icon: <Flame size={20} />,
     image: logFireBbq
   }
 ];
 
-export default function Dining({ setCurrentView }) {
+export default function Dining() {
+  const navigate = useNavigate();
+
   return (
     <section className="section-padding dining-section" id="dining">
       <div className="container-resort">
+        
         {/* Section Header */}
         <div className="section-header">
-          <span className="section-subtitle">Fine Dining</span>
-          <h2 className="section-title">The Cardamom Spice Kitchen</h2>
+          <span className="section-subtitle">Fine Estate Dining</span>
+          <h2 className="section-title">Wilderness Culinary Experiences</h2>
           <p className="section-desc">
-            Savor farm-to-table culinary offerings prepared fresh with local herbs, vegetables, and cardamoms harvested on our estate.
+            Indulge in authentic spices and farm-to-table freshness. Every plate at BlueNest captures the unique flavors of Kerala's mist-covered hills.
           </p>
         </div>
 
-        {/* Grid layout */}
+        {/* Dining Offers Cards */}
         <motion.div 
           className="resort-grid-3"
           initial="hidden"
@@ -62,7 +64,7 @@ export default function Dining({ setCurrentView }) {
           }}
         >
           {diningOffers.map((offer) => (
-            <motion.div
+            <motion.div 
               key={offer.id}
               className="dining-card resort-card"
               variants={{
@@ -71,15 +73,12 @@ export default function Dining({ setCurrentView }) {
               }}
               whileHover={{ y: -8 }}
             >
-              {/* Card Image and floating badge */}
+              {/* Card Image */}
               <div className="dining-card-img-wrap">
                 <img src={offer.image} alt={offer.title} className="dining-card-img" />
-                <div className="dining-icon-floating">
+                <div className="dining-card-icon">
                   {offer.icon}
                 </div>
-                <span className="dining-card-cat-badge text-uppercase fw-bold">
-                  {offer.category}
-                </span>
               </div>
 
               {/* Card Body */}
@@ -87,11 +86,11 @@ export default function Dining({ setCurrentView }) {
                 <h3 className="dining-card-title">{offer.title}</h3>
                 <p className="dining-card-desc text-muted small">{offer.desc}</p>
                 
-                {/* Price and Button stacked vertically to avoid overlaps */}
+                {/* Price and Action Button */}
                 <div className="dining-card-footer">
                   <div className="dining-card-price">{offer.price}</div>
                   <button 
-                    onClick={() => setCurrentView('booking')} 
+                    onClick={() => navigate('/booking')} 
                     className="btn-resort btn-resort-outline"
                     style={{ border: '1px solid var(--resort-green-deep)', cursor: 'pointer' }}
                   >

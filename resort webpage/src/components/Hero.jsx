@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
 import './Hero.css';
@@ -7,6 +8,7 @@ import heroTahr from '../assets/images/hero/hero-tahr.jpg';
 import heroBungalow from '../assets/images/hero/hero-bungalow.jpg';
 import heroPlantation from '../assets/images/hero/hero-plantation.jpg';
 
+// Content arrays for the auto-cycling carousel
 const slides = [
   {
     id: 1,
@@ -28,34 +30,36 @@ const slides = [
   }
 ];
 
-export default function Hero({ setCurrentView }) {
-  const [current, setCurrent] = useState(0);
+export default function Hero() {
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const navigate = useNavigate();
 
-  // Auto-play timer
+  // Auto-play timer for sliding background
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % slides.length);
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slides.length);
     }, 5500);
     return () => clearInterval(timer);
   }, []);
 
-  // Parallax Scroll logic
+  // Parallax scroll values
   const { scrollY } = useScroll();
   const yParallax = useTransform(scrollY, [0, 800], [0, 300]);
   const opacityParallax = useTransform(scrollY, [0, 600], [1, 0]);
 
   return (
     <section className="hero-section" id="home">
-      {/* Background Slides with Parallax */}
+      
+      {/* Background Slides with Parallax translation */}
       <motion.div 
         className="hero-background-wrapper"
         style={{ y: yParallax, opacity: opacityParallax }}
       >
         <AnimatePresence mode="wait">
           <motion.div
-            key={current}
+            key={currentSlideIndex}
             className="hero-bg-slide"
-            style={{ backgroundImage: `url(${slides[current].image})` }}
+            style={{ backgroundImage: `url(${slides[currentSlideIndex].image})` }}
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -81,17 +85,17 @@ export default function Hero({ setCurrentView }) {
             
             <AnimatePresence mode="wait">
               <motion.div
-                key={current}
+                key={currentSlideIndex}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
               >
                 <h1 className="hero-display-title text-white">
-                  {slides[current].title}
+                  {slides[currentSlideIndex].title}
                 </h1>
                 <p className="hero-display-desc text-white-50">
-                  {slides[current].desc}
+                  {slides[currentSlideIndex].desc}
                 </p>
               </motion.div>
             </AnimatePresence>
@@ -103,7 +107,7 @@ export default function Hero({ setCurrentView }) {
               transition={{ delay: 0.6 }}
             >
               <button 
-                onClick={() => setCurrentView('booking')} 
+                onClick={() => navigate('/booking')} 
                 className="btn-resort btn-resort-primary hero-btn-gap"
                 style={{ border: 'none', cursor: 'pointer' }}
               >
