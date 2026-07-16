@@ -11,18 +11,26 @@ export const RESORT_CONTACT = {
 // General enquiry template when clicking 'Enquiry Now'
 const generalEnquiryTemplate = `Hello,
 
-I would like to enquire about your resort in Munnar.
+I hope you are doing well.
 
-Name: 
-Check-in Date: 
-Check-out Date: 
-Number of Guests: 
-Room Preference: 
-Special Requests: 
+I am interested in staying at your resort in Munnar. Kindly assist me with the room availability and suitable stay options.
 
-Please share the room availability, package details, and pricing.
+Please find my travel details below:
 
-Thank you.`;
+👤 Guest Name:
+📅 Check-in Date:
+📅 Check-out Date:
+👥 Number of Guests:
+🛏️ Preferred Room / Cottage:
+🎁 Preferred Stay Package:
+🎉 Purpose of Visit:
+🍽️ Meal Preference:
+🚗 Pickup Service Required (Yes / No):
+💬 Any Special Requests:
+
+Kindly share the available rooms, package details, and the best rates for my selected dates.
+
+Thank you. I look forward to your response.`;
 
 /**
  * Returns the fully formatted WhatsApp Click-to-Chat URL for general enquiries.
@@ -37,17 +45,26 @@ export const getWhatsAppLink = () => {
 export const getPackageWhatsAppLink = (packageName) => {
   const packageTemplate = `Hello,
 
-I would like to enquire about your package: "${packageName}" at your resort in Munnar.
+I hope you are doing well.
 
-Name: 
-Check-in Date: 
-Check-out Date: 
-Number of Guests: 
-Special Requests: 
+I am interested in staying at your resort in Munnar. Kindly assist me with the room availability and suitable stay options.
 
-Please share the package availability, inclusions, and pricing details.
+Please find my travel details below:
 
-Thank you.`;
+👤 Guest Name:
+📅 Check-in Date:
+📅 Check-out Date:
+👥 Number of Guests:
+🛏️ Preferred Room / Cottage:
+🎁 Preferred Stay Package: ${packageName}
+🎉 Purpose of Visit:
+🍽️ Meal Preference:
+🚗 Pickup Service Required (Yes / No):
+💬 Any Special Requests:
+
+Kindly share the available rooms, package details, and the best rates for my selected dates.
+
+Thank you. I look forward to your response.`;
 
   return `https://wa.me/${RESORT_CONTACT.whatsappNumber}?text=${encodeURIComponent(packageTemplate)}`;
 };
