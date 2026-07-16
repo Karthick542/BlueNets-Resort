@@ -92,6 +92,25 @@
   margin-bottom: 1.5rem;
 }
 
+/* Dining Card Footer & Price styling */
+.dining-card-footer {
+  margin-top: auto; /* Push to the very bottom of the card */
+  padding-top: 1.5rem; /* Space between content and price */
+  border-top: 1px solid rgba(27, 94, 32, 0.1); /* Subtle green separator line */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Left-align price and button */
+  width: 100%;
+}
+
+.dining-card-price {
+  font-weight: 700;
+  color: var(--resort-green-medium);
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  text-align: left;
+}
+
 @media (max-width: 768px) {
   .dining-card-body {
     padding: 1.75rem;

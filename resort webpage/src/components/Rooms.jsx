@@ -112,7 +112,7 @@ const roomOptions = [
   }
 ];
 
-export default function Rooms() {
+export default function Rooms({ setCurrentView, setSelectedRoomChoice }) {
   const [selectedRoom, setSelectedRoom] = useState(null);
   const [selectedPkgIndex, setSelectedPkgIndex] = useState(0);
 
@@ -274,13 +274,17 @@ export default function Rooms() {
                         <span className="small text-muted fw-normal" style={{ fontSize: '0.85rem' }}> / night</span>
                       </span>
                     </div>
-                    <a 
-                      href="#contact" 
-                      onClick={() => setSelectedRoom(null)} 
+                    <button 
+                      onClick={() => {
+                        setSelectedRoomChoice(selectedRoom.name);
+                        setSelectedRoom(null);
+                        setCurrentView('booking');
+                      }} 
                       className="btn-resort btn-resort-primary py-2 px-4"
+                      style={{ border: 'none', cursor: 'pointer' }}
                     >
                       Book Selected
-                    </a>
+                    </button>
                   </div>
                 </div>
 

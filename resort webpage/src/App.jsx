@@ -15,8 +15,14 @@ import Dining from './components/Dining';
 import Gallery from './components/Gallery';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Enquiry from './components/Enquiry';
+import Booking from './components/Booking';
 
 export default function App() {
+  const [currentView, setCurrentView] = useState('home'); // 'home' | 'enquiry' | 'booking'
+  const [selectedRoomChoice, setSelectedRoomChoice] = useState('Canopy Treehouse Villa');
+  const [selectedPackageChoice, setSelectedPackageChoice] = useState('');
+  
   const [showWidgets, setShowWidgets] = useState(false);
   
   // Scroll trackers
@@ -28,6 +34,11 @@ export default function App() {
       setShowWidgets(latest > 400);
     });
   }, [scrollY]);
+
+  // Scroll to top on view change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [currentView]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -55,38 +66,94 @@ export default function App() {
           }} 
         />
 
-        <Navbar />
+        <Navbar 
+          currentView={currentView} 
+          setCurrentView={setCurrentView} 
+        />
         
         <main>
-          <Hero />
-          <About />
-          <Rooms />
-          <Services />
-          <Experiences />
-          <Packages />
-          <Dining />
-          <Gallery />
-          <Contact />
+          <AnimatePresence mode="wait">
+            {currentView === 'home' && (
+              <motion.div
+                key="home-view"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Hero setCurrentView={setCurrentView} />
+                <About />
+                <Rooms 
+                  setCurrentView={setCurrentView} 
+                  setSelectedRoomChoice={setSelectedRoomChoice} 
+                />
+                <Services />
+                <Experiences />
+                <Packages 
+                  setCurrentView={setCurrentView} 
+                  setSelectedPackageChoice={setSelectedPackageChoice} 
+                />
+                <Dining setCurrentView={setCurrentView} />
+                <Gallery />
+                <Contact />
+                <Booking 
+                  selectedRoomChoice={selectedRoomChoice}
+                  setSelectedRoomChoice={setSelectedRoomChoice}
+                />
+              </motion.div>
+            )}
+
+            {currentView === 'enquiry' && (
+              <motion.div
+                key="enquiry-view"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Enquiry 
+                  selectedPackageChoice={selectedPackageChoice}
+                  setSelectedPackageChoice={setSelectedPackageChoice}
+                />
+              </motion.div>
+            )}
+
+            {currentView === 'booking' && (
+              <motion.div
+                key="booking-view"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Booking 
+                  selectedRoomChoice={selectedRoomChoice}
+                  setSelectedRoomChoice={setSelectedRoomChoice}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </main>
         
-        <Footer />
+        <Footer setCurrentView={setCurrentView} />
 
         {/* Floating Actions Panel (Back-to-top + Floating Book Now) */}
         <AnimatePresence>
           {showWidgets && (
             <div className="floating-widgets-wrap">
               {/* Floating Book Stay */}
-              <motion.a
-                href="#contact"
+              <motion.button
+                onClick={() => setCurrentView('booking')}
                 className="floating-book-btn shadow-lg d-flex align-items-center"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 50 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                style={{ border: 'none', cursor: 'pointer' }}
               >
                 <Calendar size={18} className="me-2" /> Book Stay
-              </motion.a>
+              </motion.button>
 
               {/* Back to top */}
               <motion.button

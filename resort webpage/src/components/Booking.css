@@ -1,0 +1,65 @@
+.booking-section {
+  background-color: var(--resort-bg-cream);
+  border-bottom: 1px solid rgba(27, 94, 32, 0.08);
+  min-height: calc(100vh - var(--header-height));
+  display: flex;
+  align-items: center;
+}
+
+.booking-form-page-card {
+  padding: 3.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--resort-bg-white);
+}
+
+.booking-form {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.booking-form .col-md-6 {
+  grid-column: span 1;
+}
+
+.booking-form .col-12 {
+  grid-column: span 2;
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid rgba(27, 94, 32, 0.15);
+  border-radius: 6px;
+  background-color: var(--resort-bg-cream);
+  color: var(--resort-text-dark);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  border-color: var(--resort-green-medium);
+  background-color: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+@media (max-width: 768px) {
+  .booking-form-page-card {
+    padding: 1.75rem;
+  }
+  .booking-form {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  .booking-form .col-md-6 {
+    grid-column: span 1;
+  }
+}

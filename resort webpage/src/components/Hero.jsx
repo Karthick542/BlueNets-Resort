@@ -28,7 +28,7 @@ const slides = [
   }
 ];
 
-export default function Hero() {
+export default function Hero({ setCurrentView }) {
   const [current, setCurrent] = useState(0);
 
   // Auto-play timer
@@ -102,9 +102,13 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <a href="#contact" className="btn-resort btn-resort-primary hero-btn-gap">
+              <button 
+                onClick={() => setCurrentView('booking')} 
+                className="btn-resort btn-resort-primary hero-btn-gap"
+                style={{ border: 'none', cursor: 'pointer' }}
+              >
                 <Calendar size={18} className="me-2" /> Book Stay
-              </a>
+              </button>
               <a href="#rooms" className="btn-resort btn-resort-white-outline">
                 Explore Rooms <ArrowRight size={18} className="ms-2" />
               </a>

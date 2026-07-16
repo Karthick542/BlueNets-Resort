@@ -37,7 +37,7 @@ const diningOffers = [
   }
 ];
 
-export default function Dining() {
+export default function Dining({ setCurrentView }) {
   return (
     <section className="section-padding dining-section" id="dining">
       <div className="container-resort">
@@ -88,11 +88,15 @@ export default function Dining() {
                 <p className="dining-card-desc text-muted small">{offer.desc}</p>
                 
                 {/* Price and Button stacked vertically to avoid overlaps */}
-                <div className="dining-card-price-row border-top pt-3 mt-auto">
-                  <div className="fw-bold text-success text-center mb-3 small">{offer.price}</div>
-                  <a href="#contact" className="btn-resort btn-resort-outline w-100 py-2">
+                <div className="dining-card-footer">
+                  <div className="dining-card-price">{offer.price}</div>
+                  <button 
+                    onClick={() => setCurrentView('booking')} 
+                    className="btn-resort btn-resort-outline"
+                    style={{ border: '1px solid var(--resort-green-deep)', cursor: 'pointer' }}
+                  >
                     Reserve Table
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>

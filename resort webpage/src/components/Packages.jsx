@@ -51,7 +51,7 @@ const pkgsData = [
   }
 ];
 
-export default function Packages() {
+export default function Packages({ setCurrentView, setSelectedPackageChoice }) {
   return (
     <section className="section-padding packages-section" id="packages">
       <div className="container-resort">
@@ -118,9 +118,16 @@ export default function Packages() {
                 </ul>
               </div>
 
-              <a href="#contact" className="btn-resort btn-resort-outline w-100 mt-auto">
+              <button 
+                onClick={() => {
+                  setSelectedPackageChoice(pkg.name);
+                  setCurrentView('enquiry');
+                }} 
+                className="btn-resort btn-resort-outline w-100 mt-auto"
+                style={{ cursor: 'pointer' }}
+              >
                 Enquire Package
-              </a>
+              </button>
             </motion.div>
           ))}
         </motion.div>

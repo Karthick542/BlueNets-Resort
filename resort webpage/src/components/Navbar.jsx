@@ -15,7 +15,7 @@ const menuItems = [
   { label: 'Contact Us', href: '#contact' }
 ];
 
-export default function Navbar() {
+export default function Navbar({ currentView, setCurrentView }) {
   const [isSticky, setIsSticky] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -32,6 +32,34 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e, href) => {
+    setIsOpen(false);
+    if (href.startsWith('#')) {
+      if (currentView !== 'home') {
+        e.preventDefault();
+        setCurrentView('home');
+        // Wait for page to render and trigger smooth scroll
+        setTimeout(() => {
+          const el = document.querySelector(href);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300);
+      }
+    }
+  };
+
+  const handleLogoClick = (e) => {
+    setIsOpen(false);
+    if (currentView !== 'home') {
+      e.preventDefault();
+      setCurrentView('home');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 150);
+    }
+  };
+
   return (
     <motion.nav 
       layout
@@ -46,7 +74,7 @@ export default function Navbar() {
           className="nav-branding-section"
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
-          <a href="#home" className="nav-logo-anchor">
+          <a href="#home" onClick={handleLogoClick} className="nav-logo-anchor">
             <Logo size={isSticky ? 64 : 150} />
           </a>
         </motion.div>
@@ -59,7 +87,11 @@ export default function Navbar() {
         >
           {menuItems.map((item, index) => (
             <li key={index}>
-              <a href={item.href} className="nav-link-resort-new">
+              <a 
+                href={item.href} 
+                onClick={(e) => handleNavClick(e, item.href)}
+                className={`nav-link-resort-new ${currentView === 'home' && window.location.hash === item.href ? 'active-nav-link' : ''}`}
+              >
                 {item.label}
               </a>
             </li>
@@ -74,24 +106,20 @@ export default function Navbar() {
         >
           {isSticky && (
             <div className="nav-actions-container">
-              <motion.a 
-                href="#contact" 
+              <button 
+                onClick={() => { setIsOpen(false); setCurrentView('enquiry'); }} 
                 className="btn-nav-secondary"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
+                style={{ border: 'none', cursor: 'pointer' }}
               >
                 Enquiry Now
-              </motion.a>
-              <motion.a 
-                href="#contact" 
+              </button>
+              <button 
+                onClick={() => { setIsOpen(false); setCurrentView('booking'); }} 
                 className="btn-nav-primary"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
+                style={{ border: 'none', cursor: 'pointer' }}
               >
                 Book Now
-              </motion.a>
+              </button>
             </div>
           )}
         </motion.div>
@@ -121,7 +149,7 @@ export default function Navbar() {
                 <li key={index}>
                   <a 
                     href={item.href} 
-                    onClick={() => setIsOpen(false)}
+                    onClick={(e) => handleNavClick(e, item.href)}
                     className="mobile-nav-link text-white"
                   >
                     {item.label}
@@ -129,20 +157,20 @@ export default function Navbar() {
                 </li>
               ))}
               <li className="mobile-menu-actions" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', width: '100%' }}>
-                <a 
-                  href="#contact" 
-                  onClick={() => setIsOpen(false)} 
+                <button 
+                  onClick={() => { setIsOpen(false); setCurrentView('enquiry'); }} 
                   className="btn-nav-secondary text-center w-100"
+                  style={{ border: 'none', cursor: 'pointer', padding: '0.75rem 0' }}
                 >
                   Enquiry Now
-                </a>
-                <a 
-                  href="#contact" 
-                  onClick={() => setIsOpen(false)} 
+                </button>
+                <button 
+                  onClick={() => { setIsOpen(false); setCurrentView('booking'); }} 
                   className="btn-nav-primary text-center w-100"
+                  style={{ border: 'none', cursor: 'pointer', padding: '0.75rem 0' }}
                 >
                   Book Now
-                </a>
+                </button>
               </li>
             </ul>
           </motion.div>

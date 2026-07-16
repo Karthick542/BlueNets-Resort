@@ -5,7 +5,20 @@ import {
 import './Footer.css';
 import Logo from './Logo';
 
-export default function Footer() {
+export default function Footer({ setCurrentView }) {
+  const handleFooterLinkClick = (e, href) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      setCurrentView('home');
+      setTimeout(() => {
+        const el = document.querySelector(href);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    }
+  };
+
   return (
     <footer className="footer-section">
       <div className="container-resort">
@@ -36,12 +49,12 @@ export default function Footer() {
           <div className="col-lg-2 col-md-6 footer-col">
             <h4 className="footer-col-title">Quick Links</h4>
             <ul className="footer-links-list list-unstyled d-flex flex-column gap-2">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#rooms">Rooms & Suites</a></li>
-              <li><a href="#experiences">Experiences</a></li>
-              <li><a href="#packages">Packages</a></li>
-              <li><a href="#gallery">Gallery</a></li>
-              <li><a href="#dining">Dining</a></li>
+              <li><a href="#home" onClick={(e) => handleFooterLinkClick(e, '#home')}>Home</a></li>
+              <li><a href="#rooms" onClick={(e) => handleFooterLinkClick(e, '#rooms')}>Rooms & Suites</a></li>
+              <li><a href="#experiences" onClick={(e) => handleFooterLinkClick(e, '#experiences')}>Experiences</a></li>
+              <li><a href="#packages" onClick={(e) => handleFooterLinkClick(e, '#packages')}>Packages</a></li>
+              <li><a href="#gallery" onClick={(e) => handleFooterLinkClick(e, '#gallery')}>Gallery</a></li>
+              <li><a href="#dining" onClick={(e) => handleFooterLinkClick(e, '#dining')}>Dining</a></li>
             </ul>
           </div>
 
@@ -131,7 +144,7 @@ export default function Footer() {
           <div className="copyright-text small text-white-50">
             &copy; {new Date().getFullYear()} BlueNest Resort All rights reserved. | Gudarala Rd, Mattupetty, Munnar, Kerala 685612  
           </div>
-          <a href="#contact" className="btn-footer-cta btn-resort">
+          <a href="#contact" onClick={(e) => handleFooterLinkClick(e, '#contact')} className="btn-footer-cta btn-resort">
             Contact Us Today
           </a>
         </div>
