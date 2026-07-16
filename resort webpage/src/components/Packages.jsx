@@ -124,7 +124,7 @@ export default function Packages() {
                 onClick={() => {
                   window.open(getPackageWhatsAppLink(pkg.name), '_blank', 'noopener,noreferrer');
                 }} 
-                className="btn-resort btn-resort-outline w-100 mt-auto d-flex align-items-center justify-content-center gap-2"
+                className="btn-whatsapp-enquiry"
                 style={{ cursor: 'pointer' }}
               >
                 <WhatsAppIcon size={16} /> Enquire Package

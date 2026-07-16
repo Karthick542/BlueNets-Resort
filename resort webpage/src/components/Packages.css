@@ -89,9 +89,32 @@
 }
 
 /* Push package button to the bottom and ensure horizontal alignment across cards */
-.package-card button {
-  margin-top: auto !important;
+.btn-whatsapp-enquiry {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 50px;
+  border: 1px solid rgba(37, 211, 102, 0.6) !important; /* WhatsApp green border */
+  background-color: transparent !important;
+  color: #128c7e !important; /* Dark WhatsApp green for high visibility on cream */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth) !important;
+  margin-top: auto !important; /* Push to bottom of flex card */
   width: 100% !important;
+  gap: 0.5rem;
+}
+
+.btn-whatsapp-enquiry:hover {
+  background-color: #25d366 !important; /* Bright WhatsApp green fill on hover */
+  border-color: #25d366 !important;
+  color: #ffffff !important; /* White text on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
 }
 
 @media (max-width: 768px) {
