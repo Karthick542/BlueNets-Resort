@@ -9,6 +9,7 @@ export const RESORT_CONTACT = {
 };
 
 // General enquiry template when clicking 'Enquiry Now'
+// Using Unicode escapes for emojis to guarantee proper UTF-8 compiling on all platforms
 const generalEnquiryTemplate = `Hello,
 
 I hope you are doing well.
@@ -17,16 +18,16 @@ I am interested in staying at your resort in Munnar. Kindly assist me with the r
 
 Please find my travel details below:
 
-👤 Guest Name:
-📅 Check-in Date:
-📅 Check-out Date:
-👥 Number of Guests:
-🛏️ Preferred Room / Cottage:
-🎁 Preferred Stay Package:
-🎉 Purpose of Visit:
-🍽️ Meal Preference:
-🚗 Pickup Service Required (Yes / No):
-💬 Any Special Requests:
+\u{1F464} Guest Name:
+\u{1F4C5} Check-in Date:
+\u{1F4C5} Check-out Date:
+\u{1F465} Number of Guests:
+\u{1F6CF}\u{FE0F} Preferred Room / Cottage:
+\u{1F381} Preferred Stay Package:
+\u{1F389} Purpose of Visit:
+\u{1F37D}\u{FE0F} Meal Preference:
+\u{1F697} Pickup Service Required (Yes / No):
+\u{1F4AC} Any Special Requests:
 
 Kindly share the available rooms, package details, and the best rates for my selected dates.
 
@@ -51,16 +52,16 @@ I am interested in staying at your resort in Munnar. Kindly assist me with the r
 
 Please find my travel details below:
 
-👤 Guest Name:
-📅 Check-in Date:
-📅 Check-out Date:
-👥 Number of Guests:
-🛏️ Preferred Room / Cottage:
-🎁 Preferred Stay Package: ${packageName}
-🎉 Purpose of Visit:
-🍽️ Meal Preference:
-🚗 Pickup Service Required (Yes / No):
-💬 Any Special Requests:
+\u{1F464} Guest Name:
+\u{1F4C5} Check-in Date:
+\u{1F4C5} Check-out Date:
+\u{1F465} Number of Guests:
+\u{1F6CF}\u{FE0F} Preferred Room / Cottage:
+\u{1F381} Preferred Stay Package: ${packageName}
+\u{1F389} Purpose of Visit:
+\u{1F37D}\u{FE0F} Meal Preference:
+\u{1F697} Pickup Service Required (Yes / No):
+\u{1F4AC} Any Special Requests:
 
 Kindly share the available rooms, package details, and the best rates for my selected dates.
 

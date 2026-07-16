@@ -64,10 +64,10 @@ I would like to enquire about resort stays at BlueNest Resort, Munnar.
 
 Please find my enquiry details below:
 
-👤 Guest Name: ${form.name}
-📞 Phone Number: ${form.phone}
-🛏️ Interested In: ${form.interest}
-💬 Message/Requests: ${form.message || 'No additional message'}
+\u{1F464} Guest Name: ${form.name}
+\u{1F4DE} Phone Number: ${form.phone}
+\u{1F6CF}\u{FE0F} Interested In: ${form.interest}
+\u{1F4AC} Message/Requests: ${form.message || 'No additional message'}
 
 Kindly share availability and pricing details.
 
