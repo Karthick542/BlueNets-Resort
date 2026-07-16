@@ -91,7 +91,7 @@ Thank you.`;
             
             {/* Main Enquiry Form Card modeled after user spec screenshot */}
             <div className="enquiry-form-page-card">
-              <h2 className="enquiry-card-title text-center">Send an Enquiry to Munnar Stays</h2>
+              <h2 className="enquiry-card-title text-center">Send an Enquiry to BlueNest Stays</h2>
               
               <form onSubmit={handleFormSubmit} className="enquiry-whatsapp-form">
                 
