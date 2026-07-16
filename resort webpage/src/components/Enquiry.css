@@ -4,133 +4,199 @@
   min-height: calc(100vh - var(--header-height));
   display: flex;
   align-items: center;
-  padding-top: 120px; /* Offset the 80px fixed sticky header on subpage */
+  padding-top: 120px; /* Offset the 80px fixed sticky header */
   padding-bottom: 5rem;
 }
 
-.enquiry-info-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  gap: 1.5rem;
-}
-
-.enquiry-details-card {
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: var(--shadow-sm);
+/* Form Container Card matching user mockup */
+.enquiry-form-page-card {
+  padding: 3.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
   background-color: var(--resort-bg-white);
-}
-
-.enquiry-details-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.enquiry-detail-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.25rem;
-}
-
-.enquiry-map-wrapper {
-  border: 1px solid rgba(27, 94, 32, 0.15);
-  box-shadow: var(--shadow-sm);
-  background-color: var(--resort-bg-white);
-  overflow: hidden;
-}
-
-.enquiry-form-card {
-  padding: 3rem;
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: var(--shadow-lg);
-  background-color: var(--resort-bg-white);
-}
-
-/* Enquiry Form Grid Layout */
-.enquiry-form {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
-}
-
-.enquiry-form .col-md-6 {
-  grid-column: span 1;
-}
-
-.enquiry-form .col-12 {
-  grid-column: span 2;
-}
-
-/* Remove default Bootstrap horizontal padding inside CSS Grid cells for label alignment */
-.enquiry-form .col-md-6,
-.enquiry-form .col-12 {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-}
-
-.enquiry-form input,
-.enquiry-form textarea {
   width: 100%;
-  padding: 0.85rem 1.2rem;
-  border: 1px solid rgba(27, 94, 32, 0.15);
-  border-radius: 6px;
-  background-color: var(--resort-bg-cream);
+}
+
+.enquiry-card-title {
+  color: var(--resort-green-deep);
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.enquiry-whatsapp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form-group-custom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label-custom {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+/* Custom Input Groups with left-aligned icons */
+.input-group-custom {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background-color: #fcfcfc;
+  padding: 0 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.input-group-custom:focus-within {
+  border-color: var(--resort-green-medium);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+.input-group-icon {
+  color: var(--resort-green-deep);
+  opacity: 0.65;
+  margin-right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group-custom input {
+  border: none !important;
+  background-color: transparent !important;
+  padding: 0.9rem 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  width: 100%;
+  color: var(--resort-text-dark);
+  font-size: 0.95rem;
+}
+
+/* Textarea Styling */
+.enquiry-whatsapp-form textarea {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+  background-color: #fcfcfc;
   color: var(--resort-text-dark);
   font-size: 0.95rem;
   font-family: inherit;
   outline: none;
-  transition: var(--transition-fast);
+  transition: all 0.3s ease;
 }
 
-.enquiry-form input:focus,
-.enquiry-form textarea:focus {
+.enquiry-whatsapp-form textarea:focus {
   border-color: var(--resort-green-medium);
-  background-color: #fff;
+  background-color: #ffffff;
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
-/* Force action buttons to span full width of form */
-.enquiry-form button[type="submit"] {
-  width: 100% !important;
+/* Custom Radio Grid styling (2 Columns) */
+.interest-radio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.15rem;
+  margin-top: 0.35rem;
 }
 
-.enquiry-success-wrapper {
-  min-height: 420px;
+.radio-label-custom {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  font-size: 0.95rem;
+  color: #333333;
+}
+
+.radio-label-custom input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-checkmark {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  position: relative;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.radio-label-custom:hover input ~ .radio-checkmark {
+  border-color: var(--resort-green-medium);
+}
+
+.radio-label-custom input:checked ~ .radio-checkmark {
+  border-color: var(--resort-green-medium);
+}
+
+.radio-checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--resort-green-medium);
+}
+
+.radio-label-custom input:checked ~ .radio-checkmark::after {
+  display: block;
+}
+
+/* Action button styled like the tan/brown submit button in the mockup */
+.btn-whatsapp-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #b38b59; /* Tannish-brown mockup theme */
+  color: #ffffff;
+  border: 1px solid #b38b59;
+  border-radius: 8px;
+  padding: 1.1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.btn-whatsapp-submit:hover {
+  background-color: #a07a4b;
+  border-color: #a07a4b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(179, 139, 89, 0.25);
 }
 
 @media (max-width: 768px) {
-  .enquiry-form-card {
-    padding: 1.75rem;
+  .enquiry-form-page-card {
+    padding: 2rem;
   }
-  .enquiry-form {
-    grid-template-columns: 1fr !important;
-    gap: 1rem;
+  .enquiry-card-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.75rem;
   }
-  .enquiry-form .col-md-6 {
-    grid-column: span 1;
-  }
-}
-
-/* Apply flex-row side-by-side alignment on desktop viewports */
-@media (min-width: 992px) {
-  .enquiry-section .row.align-items-stretch {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 3rem !important;
-    align-items: stretch !important;
-  }
-  
-  .enquiry-section .col-lg-5 {
-    flex: 5 !important;
-    max-width: 41.666667%;
-  }
-  
-  .enquiry-section .col-lg-7 {
-    flex: 7 !important;
-    max-width: 58.333333%;
+  .interest-radio-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
   }
 }

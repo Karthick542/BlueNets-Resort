@@ -62,7 +62,7 @@ const WhatsAppIcon = ({ size = 16, className = "" }) => (
   </svg>
 );
 
-export default function Packages() {
+export default function Packages({ setSelectedPackageChoice }) {
   return (
     <section className="section-padding packages-section" id="packages">
       <div className="container-resort">
@@ -122,7 +122,8 @@ export default function Packages() {
               {/* Action Button: Opens WhatsApp chat with package parameters pre-filled */}
               <button 
                 onClick={() => {
-                  window.open(getPackageWhatsAppLink(pkg.name), '_blank', 'noopener,noreferrer');
+                  setSelectedPackageChoice(pkg.name);
+                  navigate('/enquiry');
                 }} 
                 className="btn-whatsapp-enquiry"
                 style={{ cursor: 'pointer' }}

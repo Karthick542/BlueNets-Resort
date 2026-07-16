@@ -98,10 +98,10 @@ export default function Navbar() {
   // or on any subpages (like /booking or /enquiry) to prevent content overlaps.
   const shouldBeSticky = location.pathname !== '/' || isSticky;
 
-  // Open WhatsApp link in a new tab for enquiries
+  // Navigate to the enquiry form page
   const handleWhatsAppEnquiry = () => {
     setIsOpen(false);
-    window.open(getWhatsAppLink(), '_blank', 'noopener,noreferrer');
+    navigate('/enquiry');
   };
 
   return (
