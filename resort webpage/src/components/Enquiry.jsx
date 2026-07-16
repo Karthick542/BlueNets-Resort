@@ -91,7 +91,7 @@ Thank you.`;
             
             {/* Main Enquiry Form Card modeled after user spec screenshot */}
             <div className="enquiry-form-page-card">
-              <h2 className="enquiry-card-title text-center">Send an Enquiry to BlueNets Stays</h2>
+              <h2 className="enquiry-card-title text-center">Send an Enquiry to Munnar Stays</h2>
               
               <form onSubmit={handleFormSubmit} className="enquiry-whatsapp-form">
                 
@@ -162,10 +162,15 @@ Thank you.`;
                   />
                 </div>
 
-                {/* Submit Action Button formatted like the model brown button */}
+                {/* Submit Action Button formatted like the model green button with rounded corners */}
                 <button type="submit" className="btn-whatsapp-submit">
                   <MessageSquare size={18} className="me-2" /> Send Enquiry via WhatsApp
                 </button>
+
+                {/* Subtitle helper note under the action button */}
+                <p className="text-center text-muted small mt-1 enquiry-helper-note">
+                  You'll receive a quick WhatsApp response with availability and best offers.
+                </p>
 
               </form>
             </div>

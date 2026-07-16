@@ -36,9 +36,9 @@
   font-family: var(--font-title);
   font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
   text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .enquiry-whatsapp-form {
@@ -53,17 +53,19 @@
   gap: 0.5rem;
 }
 
+/* Labels configured to standard mixed case to match design reference */
 .form-label-custom {
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.95rem;
+  font-weight: 600;
   color: #333333;
+  margin-bottom: 0.15rem;
 }
 
 /* Custom Input Groups with left-aligned icons */
 .input-group-custom {
   display: flex;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(27, 94, 32, 0.15);
   border-radius: 8px;
   background-color: #fcfcfc;
   padding: 0 1.2rem;
@@ -77,11 +79,12 @@
 }
 
 .input-group-icon {
-  color: #8c9b9c; /* Sleek grey icon matching the mockup specs */
+  color: var(--resort-green-deep); /* Green tint icon matching the mockup */
   margin-right: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.8;
 }
 
 .input-group-custom input {
@@ -95,11 +98,16 @@
   font-size: 0.95rem;
 }
 
+/* Green placeholder style to match second reference mockup */
+.input-group-custom input::placeholder {
+  color: rgba(46, 125, 50, 0.55) !important;
+}
+
 /* Textarea Styling */
 .enquiry-whatsapp-form textarea {
   width: 100%;
   padding: 1rem 1.2rem;
-  border: 1px solid rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgba(27, 94, 32, 0.15);
   border-radius: 8px;
   background-color: #fcfcfc;
   color: var(--resort-text-dark);
@@ -107,6 +115,10 @@
   font-family: inherit;
   outline: none;
   transition: all 0.3s ease;
+}
+
+.enquiry-whatsapp-form textarea::placeholder {
+  color: rgba(46, 125, 50, 0.55) !important;
 }
 
 .enquiry-whatsapp-form textarea:focus {
@@ -143,7 +155,7 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  border: 1px solid rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--resort-green-medium); /* Green check circle */
   border-radius: 50%;
   margin-right: 0.75rem;
   position: relative;
@@ -153,11 +165,11 @@
 }
 
 .radio-label-custom:hover input ~ .radio-checkmark {
-  border-color: var(--resort-green-medium);
+  border-color: var(--resort-green-deep);
 }
 
 .radio-label-custom input:checked ~ .radio-checkmark {
-  border-color: var(--resort-green-medium);
+  border-color: var(--resort-green-deep);
 }
 
 .radio-checkmark::after {
@@ -166,8 +178,8 @@
   display: none;
   top: 3px;
   left: 3px;
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background-color: var(--resort-green-medium);
 }
@@ -176,7 +188,7 @@
   display: block;
 }
 
-/* Action button restored back to the premium resort green theme */
+/* Action button restored back to the premium resort green theme with rounded corners */
 .btn-whatsapp-submit {
   display: inline-flex;
   align-items: center;
@@ -184,9 +196,9 @@
   background-color: var(--resort-green-deep); /* Restored to premium green */
   color: #ffffff;
   border: 1px solid var(--resort-green-deep);
-  border-radius: 8px;
+  border-radius: 8px; /* Standard rounded corners matching user mockup */
   padding: 1.1rem;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -200,13 +212,18 @@
   box-shadow: 0 8px 25px rgba(27, 94, 32, 0.25);
 }
 
+.enquiry-helper-note {
+  color: #5a7a68 !important; /* Muted slate-green */
+  font-size: 0.85rem !important;
+  font-weight: 500;
+}
+
 @media (max-width: 768px) {
   .enquiry-form-page-card {
     padding: 2rem;
   }
   .enquiry-card-title {
     font-size: 1.75rem;
-    margin-bottom: 1.75rem;
   }
   .interest-radio-grid {
     grid-template-columns: 1fr;
