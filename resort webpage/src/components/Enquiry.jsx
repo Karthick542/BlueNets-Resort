@@ -91,7 +91,7 @@ Thank you.`;
             
             {/* Main Enquiry Form Card modeled after user spec screenshot */}
             <div className="enquiry-form-page-card">
-              <h2 className="enquiry-card-title text-center">Send an Enquiry to Munnar Stays</h2>
+              <h2 className="enquiry-card-title text-center">Send an Enquiry to BlueNets Stays</h2>
               
               <form onSubmit={handleFormSubmit} className="enquiry-whatsapp-form">
                 
@@ -118,7 +118,7 @@ Thank you.`;
                   <div className="input-group-custom">
                     <span className="input-group-icon"><Phone size={18} /></span>
                     <input 
-                      type="tel" 
+                      type="number" 
                       id="enqPhone"
                       name="phone"
                       value={form.phone}

@@ -63,12 +63,17 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
+html, body, #root, .resort-app {
+  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--resort-bg-cream);
   color: var(--resort-text-dark);
   line-height: 1.7;
-  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
