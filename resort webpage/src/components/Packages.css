@@ -12,10 +12,14 @@
   position: relative;
   overflow: hidden;
   height: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
 }
 
 .package-card:hover {
   border-top-color: var(--resort-green-deep);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Watermark background icon decors */
@@ -31,7 +35,7 @@
   z-index: 1;
 }
 
-.package-tag-badge {
+.package-tagline {
   align-self: flex-start;
   background-color: var(--resort-green-glow);
   color: var(--resort-green-deep);
@@ -40,7 +44,8 @@
   letter-spacing: 0.05em;
   border-radius: 50px;
   margin-bottom: 0.75rem;
-  z-index: 2;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .package-title {
@@ -48,38 +53,45 @@
   font-weight: 700;
   color: var(--resort-green-deep);
   margin-bottom: 0.5rem;
-  z-index: 2;
 }
 
-.package-duration-row {
-  z-index: 2;
-  margin-bottom: 1.25rem !important;
+.package-rate {
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
-.package-price-row {
-  z-index: 2;
-  margin-bottom: 1.25rem !important;
+/* Let the card body fill the container to push the button to the bottom */
+.package-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem !important; /* Space between inclusions and the button */
 }
 
-.package-desc {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  z-index: 2;
-  margin-bottom: 1.5rem !important;
+/* Remove default browser bullet points and reset padding for inclusions list */
+.package-inclusions-list {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 0 !important;
 }
 
-.package-features-list {
-  z-index: 2;
-  margin-bottom: 2rem !important;
-}
-
-.features-title {
-  letter-spacing: 0.05em;
+.package-inclusions-list li {
   margin-bottom: 0.75rem !important;
 }
 
-.bullet-check {
-  font-weight: bold;
+/* Custom check bullet icon alignment */
+.check-bullet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Push package button to the bottom and ensure horizontal alignment across cards */
+.package-card button {
+  margin-top: auto !important;
+  width: 100% !important;
 }
 
 @media (max-width: 768px) {

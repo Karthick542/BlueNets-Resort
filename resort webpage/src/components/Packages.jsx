@@ -26,8 +26,8 @@ const packageOptions = [
     price: "₹18,900 / 2 Nights",
     icon: <Heart size={24} />,
     features: [
-      "Teak Wood Suite or Canopy Treehouse stay",
-      "Ayurvedic Couple Massage Spa session",
+      " Canopy Treehouse stay",
+      "Ayurvedic Massage Spa session",
       "Candlelit Dinner by the Cardamom Groves",
       "Private Sommelier Tea tasting session"
     ]
