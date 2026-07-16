@@ -1,0 +1,8 @@
+{
+  "name": "bluenest-root",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "cd \"resort webpage\" && npm install && npm run build && rm -rf ../dist && cp -r dist ../dist"
+  }
+}
