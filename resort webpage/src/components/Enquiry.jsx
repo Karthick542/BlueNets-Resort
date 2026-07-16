@@ -57,17 +57,17 @@ export default function Enquiry({ selectedPackageChoice, setSelectedPackageChoic
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    // Format enquiry message for WhatsApp delivery
+    // Format enquiry message for WhatsApp delivery using 16-bit surrogate pair escapes
     const textMessage = `Hello,
 
 I would like to enquire about resort stays at BlueNest Resort, Munnar.
 
 Please find my enquiry details below:
 
-\u{1F464} Guest Name: ${form.name}
-\u{1F4DE} Phone Number: ${form.phone}
-\u{1F6CF}\u{FE0F} Interested In: ${form.interest}
-\u{1F4AC} Message/Requests: ${form.message || 'No additional message'}
+\uD83D\uDC64 Guest Name: ${form.name}
+\uD83D\uDCDE Phone Number: ${form.phone}
+\uD83D\uDECF\uFE0F Interested In: ${form.interest}
+\uD83D\uDCAC Message/Requests: ${form.message || 'No additional message'}
 
 Kindly share availability and pricing details.
 
@@ -91,7 +91,7 @@ Thank you.`;
             
             {/* Main Enquiry Form Card modeled after user spec screenshot */}
             <div className="enquiry-form-page-card">
-              <h2 className="enquiry-card-title text-center">Send an Enquiry to BlueNest</h2>
+              <h2 className="enquiry-card-title text-center">Send an Enquiry to Munnar Stays</h2>
               
               <form onSubmit={handleFormSubmit} className="enquiry-whatsapp-form">
                 
